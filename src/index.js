@@ -32,7 +32,10 @@ if ('content' in document.createElement('template')) {
     if (item.image){
       let [imageName, imageExt] = item.image.split('.');
       let picture = `
-            <source srcset="${imageName}@2x.${imageExt}" media="(min-width: 500px), ${imageName}@3x.${imageExt}" media="(min-width: 700px)">
+            <source srcset="${imageName}@2x.${imageExt}" 
+                media="(min-width: 500px)">
+            <source srcset="${imageName}@3x.${imageExt}" 
+                media="(min-width: 700px)">
             <img src="${item.image}"
                  srcset="${imageName}@2x.${imageExt} 2x, ${imageName}@3x.${imageExt} 3x"
                  alt="${item.title}">`;

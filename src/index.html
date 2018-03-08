@@ -11,7 +11,13 @@
 <body class="page">
     <header class="header">
         <div class="header__container container">
-            <img src="img/zen_logo.png" alt="Яндекс Дзен">
+            <picture>
+                <source srcset="/img/zen_logo@2x.png" media="(min-width: 500px)">
+                <source srcset="/img/zen_logo@3x.png" media="(min-width: 700px)">
+                <img src="/img/zen_logo.png"
+                     srcset="/img/zen_logo@2x.png 2x, /img/zen_logo@2x.png 3x"
+                     alt="Яндекс Дзен">
+            </picture>
         </div>
     </header>
     <main class="feed container" id="feed">
