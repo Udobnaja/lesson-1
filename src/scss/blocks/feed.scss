@@ -1,0 +1,43 @@
+.feed{
+  display: grid;
+  grid-gap: 32px 16px;
+  grid-template-columns: repeat(6, 1fr);
+  word-wrap: break-word;
+
+  &__item{
+    &_size_s{
+      grid-column: auto / span 2;
+      .feed__title{
+        font-size: 1.063rem;
+      }
+
+    }
+
+    &_size_m{
+      grid-column: auto / span 3;
+
+      .feed__title{
+        font-size: 1.188rem;
+      }
+
+    }
+
+    &_size_l{
+      grid-column: auto / span 6;
+
+      .feed__title{
+        font-size: 1.188rem;
+      }
+    }
+  }
+
+  &__title{
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  &__description{
+    font-size: 1rem;
+    margin: 8px 0 0;
+  }
+}
