@@ -43,7 +43,7 @@
   display: grid;
   grid-gap: $base*4 $base*2;
   grid-template-columns: repeat(6, 1fr);
-  word-wrap: break-word;
+  word-break: break-word;
 
   &__img{
     grid-area: content;
@@ -125,10 +125,22 @@
     &_size_s{
       .feed__controls{
         flex-direction: column;
-        flex-wrap: wrap;
         align-items: flex-end;
+      }
+    }
+
+    &_size_m{
+      .feed__controls{
         padding-top: $base;
         padding-bottom: $base;
+      }
+
+    }
+
+    &_size_s{
+      .feed__controls{
+        padding-top: $base*2;
+        padding-bottom: $base*2;
       }
     }
 
