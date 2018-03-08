@@ -18,7 +18,7 @@
             "footer";
 
     grid-template-columns: auto auto 1fr;
-    grid-template-rows: min-content;
+    grid-template-rows: min-content auto min-content;
     grid-row-gap: 8px;
 
     &_size_s{
