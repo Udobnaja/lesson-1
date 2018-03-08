@@ -39,11 +39,15 @@
   font-size: 1.188rem;
 }
 
+$description-line-height: 1.429em;
+$title-line-height: 1.250em;
+
 .feed{
   display: grid;
   grid-gap: $base*4 $base*2;
   grid-template-columns: repeat(6, 1fr);
   word-break: break-word;
+  margin-bottom: $base*5;
 
   &__img{
     grid-area: content;
@@ -51,7 +55,7 @@
     height: 100%;
 
     img{
-      object-fit: fill;
+      object-fit: cover;
     }
   }
 
@@ -105,7 +109,11 @@
         }
 
         &__description{
-          max-height: 1rem * 4;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          max-height: $description-line-height*3;
         }
       }
 
@@ -159,7 +167,11 @@
         }
 
         &__description{
-          max-height: 1rem * 10;
+          display: -webkit-box;
+          -webkit-line-clamp: 8;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          max-height: $title-line-height * 9;
         }
       }
     }
@@ -176,6 +188,12 @@
     grid-area: header;
     margin: 0;
     line-height: 1.250em;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-height: 1.250em * 3;
   }
 
   &__controls{
@@ -187,7 +205,7 @@
 
   &__description{
     font-size: 0.875rem;
-    line-height: 1.429em;
+    line-height: $description-line-height;
     overflow: hidden;
     grid-area: footer;
     margin: 0;
@@ -200,7 +218,6 @@
   }
 
   &__control{
-
     width: $base*2;
     height: $base*2;
     background-repeat: no-repeat;
