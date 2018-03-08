@@ -1,5 +1,6 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin"),
-      ExtractTextPlugin = require('extract-text-webpack-plugin');
+      ExtractTextPlugin = require('extract-text-webpack-plugin'),
+      CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   module: {
@@ -7,9 +8,9 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
-        }
+        use: [
+          {loader: "babel-loader"},
+        ],
       },
       {
         test: /\.html$/,
@@ -42,7 +43,7 @@ module.exports = {
         use: {
           loader: "url-loader",
           options: {
-            limit: 25000,
+            limit: 8000,
             name: '[name].[ext]',
             outputPath: 'img/'
           },
@@ -78,6 +79,21 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename:'./styles.css'
-    })
-  ]
+    }),
+    new CopyWebpackPlugin([
+      {
+        from: ('bower_components/webcomponentsjs/*.*'),
+        to: 'bower_components/webcomponentsjs/[name].[ext]'
+      },
+      {
+        from: ('src/components/**/*.html'),
+        to: 'components/[name].[ext]'
+      },
+      {
+        from: ('src/img/*.*'),
+        to: 'img/[name].[ext]'
+      }
+    ])
+  ],
+  devtool: 'eval-source-map'
 };
