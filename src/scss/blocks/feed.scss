@@ -1,3 +1,21 @@
+%vertical-grid {
+  grid-template-areas:
+          "header"
+          "content"
+          "footer";
+  grid-row-gap: 8px;
+  grid-template-rows: min-content auto min-content;
+}
+
+%horizontal-grid{
+  grid-template-areas:
+          "content content header"
+          "content content footer"
+          "content content footer";
+  grid-gap: 8px 16px;
+  grid-template-rows: auto 1fr;
+}
+
 .feed{
   display: grid;
   grid-gap: 32px 16px;
@@ -12,17 +30,12 @@
 
   &__item{
     display: grid;
-    grid-template-areas:
-            "header"
-            "content"
-            "footer";
 
     grid-template-columns: auto auto 1fr;
-    grid-template-rows: min-content auto min-content;
-    grid-row-gap: 8px;
 
     &_size_s{
       grid-column: auto / span 2;
+      @extend %vertical-grid;
       .feed__title{
         font-size: 1.063rem;
       }
@@ -31,6 +44,7 @@
 
     &_size_m{
       grid-column: auto / span 3;
+      @extend %vertical-grid;
 
       .feed__title{
         font-size: 1.188rem;
@@ -45,6 +59,7 @@
 
     &_size_l{
       grid-column: auto / span 6;
+      @extend %horizontal-grid;
 
       .feed__title{
         font-size: 1.188rem;
