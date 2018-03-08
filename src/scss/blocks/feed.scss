@@ -4,7 +4,23 @@
   grid-template-columns: repeat(6, 1fr);
   word-wrap: break-word;
 
+  picture{
+    grid-area: content;
+    display: flex;
+    height: 100%;
+  }
+
   &__item{
+    display: grid;
+    grid-template-areas:
+            "header"
+            "content"
+            "footer";
+
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: min-content;
+    grid-row-gap: 8px;
+
     &_size_s{
       grid-column: auto / span 2;
       .feed__title{
@@ -18,6 +34,11 @@
 
       .feed__title{
         font-size: 1.188rem;
+        line-height: 23px;
+      }
+
+      .feed__description{
+        max-height: 1rem * 3.5;
       }
 
     }
@@ -27,17 +48,21 @@
 
       .feed__title{
         font-size: 1.188rem;
+        line-height: 23px;
       }
     }
   }
 
   &__title{
     font-weight: 700;
-    margin: 0 0 8px;
+    grid-area: header;
+    margin: 0;
   }
 
   &__description{
     font-size: 1rem;
-    margin: 8px 0 0;
+    overflow: hidden;
+    grid-area: footer;
+    margin: 0;
   }
 }
