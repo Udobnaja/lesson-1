@@ -1,6 +1,13 @@
 .container{
   min-width: 280px; /* изменитьь под брейк поинты*/
-  width: 68.75%;
+  width: 80%;
   max-width: 704px;/*1320px;*/ /* ??? */
   margin: 0 auto;
+  @include media('(min-width : 920px)') {
+    width: 68.75%;
+  }
+
+  @include media('(min-width : 1440px)') {
+    max-width: 1000px;
+  }
 }

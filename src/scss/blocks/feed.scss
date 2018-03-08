@@ -1,13 +1,17 @@
 %vertical-grid {
   grid-row-gap: $base;
+
+  @include media('(min-width : 1440px)') {
+    grid-row-gap: $base*1.5;
+  }
 }
 
 %vertical-grid_s_size{
-  grid-template-areas:
-          "header header"
-          "content controls";
+    grid-template-areas:
+            "header header"
+            "content controls";
 
-  grid-template-rows: min-content auto;
+    grid-template-rows: min-content auto;
 }
 
 %vertical-grid_s_size_text{
@@ -21,9 +25,17 @@
   grid-template-columns: auto $base*5;
   grid-template-areas:
           "header header"
-          "content content"
-          "footer controls";
-  grid-template-rows: min-content auto min-content ;
+          "content controls"
+          "footer footer";
+
+  grid-template-rows: min-content auto min-content;
+
+  @include media('(min-width : 768px)') {
+    grid-template-areas:
+            "header header"
+            "content content"
+            "footer controls";
+  }
 }
 
 %horizontal-grid{
@@ -59,6 +71,9 @@ $title-line-height: 1.250em;
   grid-template-columns: repeat(6, 1fr);
   word-break: break-word;
   margin-bottom: $base*5;
+  @include media('(min-width : 1440px)') {
+    grid-column-gap: $base*4;
+  }
 
   &__img{
     grid-area: content;
@@ -109,12 +124,21 @@ $title-line-height: 1.250em;
     }
 
     &_size_m{
-      grid-column: auto / span 3;
+      grid-column: auto / span 6;
+
+      @include media('(min-width : 415px)') {
+        grid-column: auto / span 3;
+      }
+
 
       @extend %vertical-grid;
       @extend %vertical-grid_m_size;
 
       .feed{
+        &__img{
+          grid-column-end: 3;
+        }
+
         &__title{
           @extend %font-settings-big;
         }
@@ -146,8 +170,13 @@ $title-line-height: 1.250em;
 
     &_size_m{
       .feed__controls{
-        padding-top: $base;
-        padding-bottom: $base;
+        padding-top: $base*1.5;
+        padding-bottom: $base*1.5;
+
+        @include media('(min-width : 768px)') {
+          padding-top: $base;
+          padding-bottom: $base;
+        }
       }
     }
 
@@ -166,17 +195,12 @@ $title-line-height: 1.250em;
       }
     }
 
-    &_size_s_text{
+    &_size_s_text,
+    &_size_l{
       .feed{
         &__control{
-          padding-left: $base;
+          margin-left: $base;
         }
-      }
-    }
-
-    &_size_l{
-      .feed__controls{
-        padding-left: $base;
       }
     }
   }
@@ -214,10 +238,13 @@ $title-line-height: 1.250em;
   }
 
   &__control{
-    width: $base*2;
+    width: $base*2 + 1;
     height: $base*2;
     background-repeat: no-repeat;
-    padding-right: $base;
+    margin-right: $base*1.5;
+    @include media('(min-width : 768px)') {
+      margin-right: $base;
+    }
     cursor: pointer;
 
     &_like{
