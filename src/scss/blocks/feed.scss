@@ -39,6 +39,17 @@
   font-size: 1.188rem;
 }
 
+%overflow-ellipsis{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin overflow-ellipsis($line-count, $line-height) {
+  -webkit-line-clamp: $line-count;
+  max-height: $line-height * $line-count;
+}
+
 $description-line-height: 1.429em;
 $title-line-height: 1.250em;
 
@@ -109,11 +120,7 @@ $title-line-height: 1.250em;
         }
 
         &__description{
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          max-height: $description-line-height*3;
+          @include overflow-ellipsis(3, $description-line-height);
         }
       }
 
@@ -142,7 +149,6 @@ $title-line-height: 1.250em;
         padding-top: $base;
         padding-bottom: $base;
       }
-
     }
 
     &_size_s{
@@ -165,14 +171,6 @@ $title-line-height: 1.250em;
         &__control{
           padding-left: $base;
         }
-
-        &__description{
-          display: -webkit-box;
-          -webkit-line-clamp: 8;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          max-height: $title-line-height * 9;
-        }
       }
     }
 
@@ -189,11 +187,8 @@ $title-line-height: 1.250em;
     margin: 0;
     line-height: 1.250em;
 
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-height: 1.250em * 3;
+    @extend %overflow-ellipsis;
+    @include overflow-ellipsis(4,  1.250em);
   }
 
   &__controls{
@@ -206,9 +201,10 @@ $title-line-height: 1.250em;
   &__description{
     font-size: 0.875rem;
     line-height: $description-line-height;
-    overflow: hidden;
     grid-area: footer;
     margin: 0;
+    @extend %overflow-ellipsis;
+    @include overflow-ellipsis(8, $description-line-height);
   }
 
   &__chanel{
