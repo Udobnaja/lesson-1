@@ -18,16 +18,20 @@ if ('content' in document.createElement('template')) {
     title.textContent = item.title;
     title.style.color = item.titleColor;
 
-    let description;
+    let description = container.querySelector('.feed__description');
 
     if (item.description){
-      description = container.querySelector('.feed__description');
       if (description){
         description.textContent = item.description;
+        if(!item.image){
+          container.classList.add(`${FEED_TYPES[item.size]}_text`);
+        }
       }
+    } else {
+      description.remove();
     }
 
-    let img;
+    let img = container.querySelector('picture');
 
     if (item.image){
       let [imageName, imageExt] = item.image.split('.');
@@ -39,8 +43,9 @@ if ('content' in document.createElement('template')) {
             <img src="${item.image}"
                  srcset="${imageName}@2x.${imageExt} 2x, ${imageName}@3x.${imageExt} 3x"
                  alt="${item.title}">`;
-      img = container.querySelector('picture');
       img.innerHTML = picture;
+    } else {
+      img.remove();
     }
 
     let clone = document.importNode(container, true);

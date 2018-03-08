@@ -1,19 +1,35 @@
 %vertical-grid {
+  grid-row-gap: 8px;
+}
+
+%vertical-grid_s_size{
   grid-template-areas:
           "header"
           "content"
-          "footer";
-  grid-row-gap: 8px;
-  grid-template-rows: min-content auto min-content;
+          "controls";
+  grid-template-rows: min-content auto 40px;
+}
+
+%vertical-grid_m_size{
+  grid-template-columns: auto 40px;
+  grid-template-areas:
+          "header header"
+          "content content"
+          "footer controls";
+  grid-template-rows: min-content auto min-content ;
 }
 
 %horizontal-grid{
   grid-template-areas:
           "content content header"
           "content content footer"
-          "content content footer";
+          "content content controls";
   grid-gap: 8px 16px;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr 24px;
+}
+
+%font-settings-big{
+  font-size: 1.188rem;
 }
 
 .feed{
@@ -26,29 +42,44 @@
     grid-area: content;
     display: flex;
     height: 100%;
+
+    img{
+      object-fit: fill;
+    }
   }
 
   &__item{
     display: grid;
 
-    grid-template-columns: auto auto 1fr;
-
     &_size_s{
       grid-column: auto / span 2;
       @extend %vertical-grid;
+      @extend %vertical-grid_s_size;
+
       .feed__title{
         font-size: 1.063rem;
+      }
+
+      picture{
+        grid-row: 2 / 4;
+      }
+
+      &_text{
+        .feed__description{
+          grid-area: content;
+        }
       }
 
     }
 
     &_size_m{
       grid-column: auto / span 3;
+
       @extend %vertical-grid;
+      @extend %vertical-grid_m_size;
 
       .feed__title{
-        font-size: 1.188rem;
-        line-height: 23px;
+        @extend %font-settings-big;
       }
 
       .feed__description{
@@ -60,10 +91,10 @@
     &_size_l{
       grid-column: auto / span 6;
       @extend %horizontal-grid;
+      grid-template-columns: auto auto 1fr;
 
       .feed__title{
-        font-size: 1.188rem;
-        line-height: 23px;
+        @extend %font-settings-big;
       }
     }
   }
@@ -72,10 +103,18 @@
     font-weight: 700;
     grid-area: header;
     margin: 0;
+    line-height: 1.250em;
+  }
+
+  &__controls{
+    grid-area: controls;
+    background: red;
+    z-index: 2;
   }
 
   &__description{
-    font-size: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.429em;
     overflow: hidden;
     grid-area: footer;
     margin: 0;
