@@ -3,7 +3,7 @@
 
     function _fetchAndPopulateData(self) {
         let feedList = self.shadowRoot.querySelector('#feed-list');
-        fetch('/api/feed/data.json')
+        fetch('./api/feed/data.json')
             .then((response) => response.text())
             .then((responseText) => {
                 const list = JSON.parse(responseText).feed;
