@@ -1,35 +1,35 @@
 (function () {
-  const currentDocument = document.currentScript.ownerDocument;
+    const currentDocument = document.currentScript.ownerDocument;
 
-  function _fetchAndPopulateData(self) {
-    let feedList = self.shadowRoot.querySelector('#feed-list');
-    fetch(`/api/feed/data.json`)
-      .then((response) => response.text())
-      .then((responseText) => {
-        const list = JSON.parse(responseText).feed;
-        self.feedList = list;
-        feedList.list = list;
-      })
-      .catch((e) => {
-      alert(e);
-    })
-  }
-
-  class FeedController extends HTMLElement {
-    constructor() {
-      super();
-      this.feedList = [];
+    function _fetchAndPopulateData(self) {
+        let feedList = self.shadowRoot.querySelector('#feed-list');
+        fetch('/api/feed/data.json')
+            .then((response) => response.text())
+            .then((responseText) => {
+                const list = JSON.parse(responseText).feed;
+                self.feedList = list;
+                feedList.list = list;
+            })
+            .catch((e) => {
+                alert(e);
+            });
     }
 
-    connectedCallback() {
-      const shadowRoot = this.attachShadow({ mode: 'open' });
-      const template = currentDocument.querySelector('#feed-controller-template');
-      const instance = template.content.cloneNode(true);
-      shadowRoot.appendChild(instance);
+    class FeedController extends HTMLElement {
+        constructor() {
+            super();
+            this.feedList = [];
+        }
 
-      _fetchAndPopulateData(this);
+        connectedCallback() {
+            const shadowRoot = this.attachShadow({mode: 'open'});
+            const template = currentDocument.querySelector('#feed-controller-template');
+            const instance = template.content.cloneNode(true);
+            shadowRoot.appendChild(instance);
+
+            _fetchAndPopulateData(this);
+        }
     }
-  }
 
-  customElements.define('feed-controller', FeedController);
+    customElements.define('feed-controller', FeedController);
 })();
