@@ -4,6 +4,7 @@ $description-line-height: 1.429em;
 $title-line-height: 1.250em;
 
 .feed{
+  $feed: &;
   display: grid;
   grid-gap: $base*3 $base*2;
   grid-template-columns: repeat(6, 1fr);
@@ -47,7 +48,7 @@ $title-line-height: 1.250em;
       @extend %vertical-grid;
       @extend %vertical-grid_s_size;
 
-      .feed{
+      #{$feed}{
         @include media('(min-width : 768px)') {
           &__title {
             font-size: $title-font-size-normal;
@@ -66,7 +67,7 @@ $title-line-height: 1.250em;
 
       &_text{
         @extend %vertical-grid_s_size_text;
-        .feed{
+        #{$feed}{
           &__description{
             grid-area: content;
             @include overflow-ellipsis-display;
@@ -91,7 +92,7 @@ $title-line-height: 1.250em;
       @extend %vertical-grid;
       @extend %vertical-grid_m_size;
 
-      .feed{
+      #{$feed}{
         &__img{
           grid-column-end: 3;
         }
@@ -127,7 +128,7 @@ $title-line-height: 1.250em;
         grid-template-columns: 1fr 1fr 1fr;
       }
 
-      .feed{
+      #{$feed}{
 
         &__img{
           grid-column-end: 3;
@@ -146,7 +147,7 @@ $title-line-height: 1.250em;
     &_size_m,
     &_size_s,
     &_size_l{
-      .feed__controls{
+      #{$feed}__controls{
         flex-direction: column;
         align-items: flex-end;
       }
@@ -154,7 +155,7 @@ $title-line-height: 1.250em;
 
     &_size_l{
       @include media('(min-width : 768px)') {
-        .feed__controls{
+        #{$feed}__controls{
           flex-direction: row;
           align-items: center;
           margin-right: 0;
@@ -164,14 +165,14 @@ $title-line-height: 1.250em;
 
     &_size_m{
       @include media('(min-width : 768px)') {
-        .feed__controls{
+        #{$feed}__controls{
           margin-right: 0;
         }
       }
     }
 
     &_size_s_text{
-      .feed{
+      #{$feed}{
         &__controls{
           flex-direction: row;
           align-items: center;
