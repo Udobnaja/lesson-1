@@ -1,3 +1,8 @@
 .header{
-  padding: $base*5 0;
+  padding: $base*4 0;
+
+  @include media('(min-width : 768px)') {
+    padding-top: $base*5;
+    padding-bottom: $base*5;
+  }
 }

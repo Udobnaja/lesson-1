@@ -40,10 +40,34 @@
 }
 
 %horizontal-grid{
+
+  grid-row-gap: $base;
+
+  @include media('(min-width : 1440px)') {
+    grid-row-gap: $base*1.5;
+  }
+
   grid-template-areas:
-          "content content header"
-          "content content footer"
-          "content content controls";
-  grid-gap: $base $base*2;
-  grid-template-rows: auto 1fr $base*3;
+          "header header"
+          "content controls";
+
+  grid-template-rows: min-content auto min-content;
+
+
+  @include media('(min-width : 768px)') {
+    grid-template-areas:
+            "content header"
+            "content footer"
+            "content controls";
+
+    grid-gap: $base $base*2;
+    grid-template-rows: auto 1fr $base*3;
+  }
+
+  @include media('(min-width : 1024px)') {
+    grid-template-areas:
+            "content content header"
+            "content content footer"
+            "content content controls";
+  }
 }

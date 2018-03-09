@@ -1,11 +1,11 @@
 .container{
   min-width: 280px;
   width: 80%;
-  max-width: 704px;/*1320px;*/ /* ??? */
+  max-width: 704px;
   margin: 0 auto;
 
   @include media('(min-width : 920px)') {
-    width: 68.75%;
+    width: 72%;
   }
 
   @include media('(min-width : 1440px)') {
