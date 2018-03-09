@@ -1,14 +1,15 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin"),
       ExtractTextPlugin = require('extract-text-webpack-plugin'),
-      CopyWebpackPlugin = require('copy-webpack-plugin');
+      CopyWebpackPlugin = require('copy-webpack-plugin'),
+      autoprefixer = require('autoprefixer');
 
 module.exports = {
-  entry: { styles: './src/styles.scss', feed: './src/feed.scss'},
+  entry: { styles: './src/styles.scss', feed: './src/feed.scss', index: './src/index.js'},
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /bower_components/],
         use: [
           {loader: "babel-loader"},
         ],
@@ -26,7 +27,20 @@ module.exports = {
         test:/\.(s*)css$/,
         use: ExtractTextPlugin.extract({
           fallback:'style-loader',
-          use:['css-loader','sass-loader']
+          use:[
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+              plugins: [
+                autoprefixer({
+                  browsers:['ie >= 8', 'last 4 version']
+                })
+              ],
+              sourceMap: true
+              }
+            },
+            'sass-loader']
         })
       },
       {
@@ -96,13 +110,9 @@ module.exports = {
         to: 'img/[name].[ext]'
       },
       {
-        from: ('src/api/**/*.*'),
+        from: ('server/api/**/*.*'),
         to: 'api/feed/[name].[ext]'
       },
-      // {
-      //   from: ('src/feed.css'),
-      //   to: '[name].css'
-      // }
     ])
   ],
 };
