@@ -1,13 +1,11 @@
-%font-settings-big{
-  font-size: 1.188rem;
-}
-
+$title-font-size-big: 1.188rem;
+$title-font-size-normal: 1.063rem;
 $description-line-height: 1.429em;
 $title-line-height: 1.250em;
 
 .feed{
   display: grid;
-  grid-gap: $base*2 $base*2;
+  grid-gap: $base*3 $base*2;
   grid-template-columns: repeat(6, 1fr);
   overflow-wrap: break-word;
   margin-bottom: $base*5;
@@ -50,8 +48,10 @@ $title-line-height: 1.250em;
       @extend %vertical-grid_s_size;
 
       .feed{
-        &__title{
-          font-size: 1.063rem;
+        @include media('(min-width : 768px)') {
+          &__title {
+            font-size: $title-font-size-normal;
+          }
         }
 
         &__img{
@@ -96,10 +96,6 @@ $title-line-height: 1.250em;
           grid-column-end: 3;
         }
 
-        &__title{
-          @extend %font-settings-big;
-        }
-
         &__description{
           @include overflow-ellipsis(3, $description-line-height);
         }
@@ -132,9 +128,6 @@ $title-line-height: 1.250em;
       }
 
       .feed{
-        &__title{
-          @extend %font-settings-big;
-        }
 
         &__img{
           grid-column-end: 3;
@@ -203,6 +196,7 @@ $title-line-height: 1.250em;
     font-weight: 700;
     grid-area: header;
     line-height: 1.250em;
+    font-size: $title-font-size-big;
 
     @include media('(min-width : 768px)') {
       @include overflow-ellipsis-display;
