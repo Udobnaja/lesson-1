@@ -215,7 +215,7 @@
     background-repeat: no-repeat;
     cursor: pointer; }
     .feed__control_like {
-      background-image: url(data:image/png;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICJpbWcvSGVhcnQucG5nIjs=); }
+      background-image: url(img/Heart.png); }
     .feed__control_more {
-      background-image: url(data:image/png;base64,bW9kdWxlLmV4cG9ydHMgPSBfX3dlYnBhY2tfcHVibGljX3BhdGhfXyArICJpbWcvQWN0aW9ucy5wbmciOw==);
+      background-image: url(img/Actions.png);
       height: 4px; }
