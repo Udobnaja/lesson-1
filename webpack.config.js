@@ -52,37 +52,34 @@ module.exports = {
         }]
       },
       {
-        test: /\.(jpg|png|svg)$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            limit: 8000,
-            name: '[name].[ext]',
-            outputPath: 'img/'
-          },
-        },
-      },
-      {
         test: /\.(jpe?g|png|gif|svg)$/,
         use: [{
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'img/'
+            outputPath: 'img'
           }
         }]
       },
       {
         test: /.*\.(gif|png|jpe?g)$/i,
+        exclude: [/fonts/],
         use: [
           {
             loader: 'image-webpack-loader',
             options: {
-              name: '[name].[ext]',
-              outputPath: 'img/'},
+              outputPath: 'img',
+              optipng: {
+                enabled: false
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+            },
           }
         ]
-      }
+      },
     ]
   },
   plugins: [
@@ -102,10 +99,6 @@ module.exports = {
       {
         from: ('src/components/**/*.*'),
         to: 'components/[name].[ext]'
-      },
-      {
-        from: ('src/img/*.*'),
-        to: 'img/[name].[ext]'
       },
       {
         from: ('server/api/**/*.*'),

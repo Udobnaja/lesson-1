@@ -1,3 +1,5 @@
+require.context('./img', true);
+
 (function () {
     if ('registerElement' in document &&
       'import' in document.createElement('link') &&
