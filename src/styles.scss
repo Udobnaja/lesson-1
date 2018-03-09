@@ -1,17 +1,16 @@
 
+//global
 @import "./scss/helpers/variables";
+@import "./scss/helpers/placeholders";
 @import "./scss/helpers/mixins";
-
-// base
 
 @import "./scss/base/typography";
 @import "./scss/base/reset";
 
 // blocks
-
 @import "./scss/blocks/page";
 @import "./scss/blocks/container";
 @import "./scss/blocks/header";
-@import "./scss/blocks/feed";
 
-// helpers
+@import "./scss/helpers/feed/feed";
+@import "./scss/blocks/feed";

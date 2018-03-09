@@ -3,3 +3,14 @@
     @content;
   }
 }
+
+@mixin overflow-ellipsis-display(){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin overflow-ellipsis($line-count, $line-height) {
+  -webkit-line-clamp: $line-count;
+  max-height: $line-height * $line-count;
+}
