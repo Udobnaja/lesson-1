@@ -9,7 +9,7 @@ $title-line-height: 1.250em;
   display: grid;
   grid-gap: $base*2 $base*2;
   grid-template-columns: repeat(6, 1fr);
-  word-break: break-word;
+  overflow-wrap: break-word;
   margin-bottom: $base*5;
   grid-auto-flow: row dense;
   @include media('(min-width : 768px)') {
