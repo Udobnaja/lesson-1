@@ -1,7 +1,7 @@
 .container{
-  min-width: 280px;
+  min-width: $base*35;
   width: 80%;
-  max-width: 704px;
+  max-width: $base*88;
   margin: 0 auto;
   display: block; // fix forfire fox
 
@@ -10,6 +10,7 @@
   }
 
   @include media('(min-width : 1440px)') {
-    max-width: 1000px;
+    width: 64%;
+    max-width: $base*147;
   }
 }

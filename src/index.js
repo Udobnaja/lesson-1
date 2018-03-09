@@ -7,7 +7,7 @@ require.context('./img', true);
         console.log('platform ready');
     } else {
         const e = document.createElement('script');
-        e.src = '/bower_components/webcomponentsjs/webcomponents-hi-sd-ce.min.js';
+        e.src = './bower_components/webcomponentsjs/webcomponents-hi-sd-ce.js';
         document.body.appendChild(e);
     }
 })();

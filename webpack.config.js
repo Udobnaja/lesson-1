@@ -53,6 +53,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
+        exclude: [/src\/fonts/],
         use: [{
           loader: 'file-loader',
           options: {
@@ -62,8 +63,8 @@ module.exports = {
         }]
       },
       {
-        test: /.*\.(gif|png|jpe?g)$/i,
-        exclude: [/fonts/],
+        test: /\.(jpe?g|png|gif|svg)$/,
+        exclude: [/src\/fonts/],
         use: [
           {
             loader: 'image-webpack-loader',
