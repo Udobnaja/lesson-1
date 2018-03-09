@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="robots" content="noindex">
     <title>Яндекс Дзен</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body class="page">
     <header class="header">
@@ -20,19 +21,11 @@
             </picture>
         </div>
     </header>
-    <main class="feed container" id="feed">
-        <template id="feed-card">
-            <article class="feed__item">
-                <h2 class="feed__title"></h2>
-                <picture class="feed__img"></picture>
-                <p class="feed__description"></p>
-                <div class="feed__controls">
-                    <span class="feed__chanel"></span>
-                    <div class="feed__control feed__control_more"></div>
-                    <div class="feed__control feed__control_like"></div>
-                </div>
-            </article>
-        </template>
+    <main>
+        <feed-controller class="container"></feed-controller>
+        <script src="./bower_components/webcomponentsjs/webcomponents-hi.js"></script>
+        <script src="./bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+        <link rel="import" href="./components/FeedController.html">
     </main>
 </body>
 </html>

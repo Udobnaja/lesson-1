@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin"),
       CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+  entry: { styles: './src/styles.scss', feed: './src/feed.scss'},
   module: {
     rules: [
       {
@@ -75,10 +76,11 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/index.html",
-      filename: "./index.html"
+      filename: "./index.html",
+      inject: false,
     }),
     new ExtractTextPlugin({
-      filename:'./styles.css'
+      filename:'./[name].css'
     }),
     new CopyWebpackPlugin([
       {
@@ -86,13 +88,21 @@ module.exports = {
         to: 'bower_components/webcomponentsjs/[name].[ext]'
       },
       {
-        from: ('src/components/**/*.html'),
+        from: ('src/components/**/*.*'),
         to: 'components/[name].[ext]'
       },
       {
         from: ('src/img/*.*'),
         to: 'img/[name].[ext]'
-      }
+      },
+      {
+        from: ('src/api/**/*.*'),
+        to: 'api/feed/[name].[ext]'
+      },
+      // {
+      //   from: ('src/feed.css'),
+      //   to: '[name].css'
+      // }
     ])
   ],
 };

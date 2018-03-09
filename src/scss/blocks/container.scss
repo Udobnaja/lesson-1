@@ -3,6 +3,7 @@
   width: 80%;
   max-width: 704px;
   margin: 0 auto;
+  display: block; // fix forfire fox
 
   @include media('(min-width : 920px)') {
     width: 72%;

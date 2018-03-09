@@ -1,13 +1,4 @@
-Todo
-адптив
-css modules ???
-typography 
-class ???
-map js webpack
-custom components
 
-
-пересмотри чанелов флекс шринк
 !source map
 
 убрала декскрипшн на мобилках  (кроме типа где есть только заголовок и описание)
