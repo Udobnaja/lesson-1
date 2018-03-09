@@ -96,7 +96,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       {
-        from: ('bower_components/webcomponentsjs/*.*'),
+        from: ('bower_components/webcomponentsjs/*.js'),
         to: 'bower_components/webcomponentsjs/[name].[ext]'
       },
       {

@@ -252,11 +252,11 @@ $title-line-height: 1.250em;
     cursor: pointer;
 
     &_like{
-      background-image: url('/img/Heart.png');
+      background-image: url('./img/Heart.png');
     }
 
     &_more{
-      background-image: url('/img/Actions.png');
+      background-image: url('./img/Actions.png');
       height: $base/2;
     }
   }
