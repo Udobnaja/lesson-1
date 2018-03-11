@@ -2,14 +2,15 @@
     <link rel="stylesheet" href="./feed.css">
     <section class="feed" id="feed"></section>
 </template>
-<style>
-    .feed >>>{
-        border : 2px solid green;
-    }
-</style>
+<!-- edge problems decide here-->
+<link rel="stylesheet" href="../feed.css">
 <script>
-  var importDoc = document.currentScript.ownerDocument;
-  var style = importDoc.querySelector('style');
-  document.head.appendChild(style);
+  var isEdge = window.navigator.userAgent.indexOf('Edge/');
+  if (isEdge){
+    var importDoc = document.currentScript.ownerDocument;
+    var style = importDoc.querySelector('link[rel=stylesheet]');
+    document.head.appendChild(style);
+  }
+
 </script>
 <script src="../components/FeedList.js"></script>
