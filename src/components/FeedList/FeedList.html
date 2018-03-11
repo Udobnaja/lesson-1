@@ -3,14 +3,14 @@
     <section class="feed" id="feed"></section>
 </template>
 <!-- edge problems decide here-->
-<!--<style>-->
-    <!--.feed >>>{-->
-        <!--border : 2px solid green;-->
-    <!--}-->
-<!--</style>-->
-<!--<script>-->
-  <!--var importDoc = document.currentScript.ownerDocument;-->
-  <!--var style = importDoc.querySelector('style');-->
-  <!--document.head.appendChild(style);-->
-<!--</script>-->
+<link rel="stylesheet" href="../feed.css">
+<script>
+  var isEdge = window.navigator.userAgent.indexOf('Edge/');
+  if (isEdge){
+    var importDoc = document.currentScript.ownerDocument;
+    var style = importDoc.querySelector('link[rel=stylesheet]');
+    document.head.appendChild(style);
+  }
+
+</script>
 <script src="../components/FeedList.js"></script>
