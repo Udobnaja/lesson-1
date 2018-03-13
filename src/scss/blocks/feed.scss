@@ -11,6 +11,7 @@ $title-line-height: 1.250em;
   overflow-wrap: break-word;
   margin-bottom: $base*5;
   grid-auto-flow: row dense;
+  cursor: pointer;
   @include media('(min-width : 768px)') {
     grid-row-gap: $base*4;
   }
@@ -23,6 +24,7 @@ $title-line-height: 1.250em;
     display: flex;
     height: 100%;
     background: #f4f4f4;
+    position: relative;
 
     img{
       object-fit: cover;
@@ -30,10 +32,28 @@ $title-line-height: 1.250em;
 
       border-radius: $base/2;
     }
+
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      background-color: transparent;
+      width: 100%;
+      height: 100%;
+      transition: background-color .2s;
+    }
   }
 
   &__item{
     display: grid;
+
+    &:hover{
+      #{$feed}__img{
+        &:after{
+          background-color: rgba(0,0,0,.4);
+        }
+      }
+    }
 
     &_size_s{
       grid-column: auto / span 6;
@@ -189,9 +209,11 @@ $title-line-height: 1.250em;
       }
     }
   }
+
   &__title,
   &__description{
     margin: 0;
+    transition: color .1s;
   }
 
   &__title{
