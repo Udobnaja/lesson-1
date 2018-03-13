@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin"),
       ExtractTextPlugin = require('extract-text-webpack-plugin'),
       CopyWebpackPlugin = require('copy-webpack-plugin'),
+      CleanWebpackPlugin = require('clean-webpack-plugin'),
       autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -96,6 +97,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new CleanWebpackPlugin(['dist']),
     new HtmlWebPackPlugin({
       template: "./src/index.html",
       filename: "./index.html",
