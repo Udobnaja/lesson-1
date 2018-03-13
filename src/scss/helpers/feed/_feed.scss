@@ -11,7 +11,7 @@
           "header header"
           "content controls";
 
-  grid-template-rows: min-content auto;
+  grid-template-rows: min-content minmax(10rem, auto);
 }
 
 %vertical-grid_s_size_text{
@@ -27,7 +27,7 @@
           "header header"
           "content controls";
 
-  grid-template-rows: min-content auto;
+  grid-template-rows: min-content minmax(10rem, auto);
 
   @include media('(min-width : 768px)') {
     grid-template-areas:
@@ -35,7 +35,7 @@
             "content content"
             "footer controls";
 
-    grid-template-rows: min-content auto min-content;
+    grid-template-rows: min-content minmax(10rem, auto) min-content;
   }
 }
 
@@ -51,7 +51,7 @@
           "header header"
           "content controls";
 
-  grid-template-rows: min-content auto min-content;
+  grid-template-rows: min-content minmax(10rem, auto) min-content;
 
 
   @include media('(min-width : 768px)') {
@@ -61,7 +61,7 @@
             "content controls";
 
     grid-gap: $base $base*2;
-    grid-template-rows: auto 1fr $base*3;
+    grid-template-rows: auto  minmax(10rem, auto) $base*3;
   }
 
   @include media('(min-width : 1024px)') {

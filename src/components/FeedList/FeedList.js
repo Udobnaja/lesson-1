@@ -18,8 +18,7 @@
         feedElement.innerHTML = `
           <h2 class="feed__title" style="color: ${feed.titleColor}">${feed.title}</h2>
           ${(feed.image) ? `<picture class="feed__img">
-                                <source srcset="${img}@2x.${ext}" media="(max-width: 1280px)">
-                                <source srcset="${img}@3x.${ext}">
+                                <source srcset="${img}@2x.${ext}, ${img}@3x.${ext} 3x" media="(min-width: 768px)">
                                 <img src="${feed.image}"
                                     srcset="${img}@2x.${ext} 2x, ${img}@3x.${ext} 3x"
                                     alt="${feed.title}"></picture>` : ''}

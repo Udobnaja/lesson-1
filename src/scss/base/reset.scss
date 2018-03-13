@@ -8,6 +8,10 @@ html{
   @include media('(min-width : 1280px)') {
     font-size: $base*2.3;
   }
+
+  @include media('(min-width : 1680px)') {
+    font-size: $base*2.5;
+  }
 }
 
 body{
