@@ -26,19 +26,31 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback:'style-loader',
           use:[
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                minimize: true,
+                sourceMap: true,
+              },
+            },
             {
               loader: 'postcss-loader',
               options: {
-              plugins: [
-                autoprefixer({
-                  browsers:['ie >= 8', 'last 4 version']
-                })
-              ],
-              sourceMap: true
-              }
+                plugins: [
+                  autoprefixer({
+                    browsers:['ie >= 8', 'last 4 version']
+                  })
+                ],
+                sourceMap: true,
+              },
             },
-            'sass-loader']
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+                sourceMapContents: true
+              }
+            }]
         })
       },
       {
@@ -107,4 +119,5 @@ module.exports = {
       },
     ])
   ],
+  devtool : "source-map"
 };
