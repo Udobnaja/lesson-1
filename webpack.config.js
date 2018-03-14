@@ -56,6 +56,7 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        exclude: [/src\/img/],
         use: [{
           loader: 'file-loader',
           options: {
@@ -66,7 +67,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
-        exclude: [/src\/fonts/],
+        exclude: [/src\/fonts/, /src\/img\/favicon/],
         use: [{
           loader: 'file-loader',
           options: {
@@ -74,6 +75,25 @@ module.exports = {
             outputPath: 'img'
           }
         }]
+      },
+      {
+        test: /\.(json|webmanifest)$/,
+        use: [
+          {
+            loader: 'json-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(svg|png|ico|xml|json)$/,
+        include: [/src\/img\/favicon/],
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'img/favicon'
+          }
+        }],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/,
