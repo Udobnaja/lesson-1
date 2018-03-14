@@ -46,6 +46,7 @@ $title-line-height: 1.250em;
 
   &__item{
     display: grid;
+    position: relative;
 
     &:hover{
       #{$feed}__img{
