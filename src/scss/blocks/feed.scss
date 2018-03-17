@@ -276,6 +276,8 @@ $title-line-height: 1.250em;
     height: $base*2;
     background-repeat: no-repeat;
     cursor: pointer;
+    border: 0;
+    outline: none;
 
     &_like{
       background-image: url('./img/Heart.png');
